@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-charcoal: #1C1917;
+  --color-charcoal-dark: #12100E;
+  --color-charcoal-light: #2D2A26;
+  --color-sage: #1C473A;
+  --color-sage-dark: #14352B;
+  --color-sage-light: #286653;
+  --color-sage-tint: #E2ECE8;
+  --color-sage-tint-light: #F0F6F4;
+  --color-offwhite: #FAF8F5;
+  --color-slate-muted: #5C564E;
+
+  /* Luxury Light Theme Tokens (Imperial Ivory & Champagne Bronze) */
+  --color-luxe-bg: #FAF8F5;
+  --color-luxe-canvas: #FAF8F5;
+  --color-luxe-surface: #FFFFFF;
+  --color-luxe-parchment: #F4EFE6;
+  --color-luxe-border: #E5DECE;
+  --color-luxe-border-strong: #D5CAAA;
+  --color-luxe-gold: #9B783E;
+  --color-luxe-gold-light: #B8934C;
+  --color-luxe-gold-dark: #7A5E2E;
+  --color-luxe-gold-tint: #F8F3EA;
+  --color-luxe-emerald: #1C473A;
+  --color-luxe-emerald-dark: #14352B;
+  --color-luxe-ink: #1C1917;
+  --color-luxe-muted: #5C564E;
+  --color-luxe-subtle: #8C8273;
+
+  /* Midnight Dark Theme Tokens */
+  --color-midnight-bg: #090D16;
+  --color-midnight-surface: #0F172A;
+  --color-midnight-card: #151F33;
+  --color-midnight-card-hover: #1E293B;
+  --color-midnight-border: #1E293B;
+  --color-midnight-border-light: #334155;
+  --color-midnight-text: #F8FAFC;
+  --color-midnight-muted: #94A3B8;
+
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-editorial: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #FAF8F5;
+    color: #1C1917;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+  
+  /* Midnight Dark Mode Base Overrides */
+  html.dark,
+  body.dark,
+  [data-theme="midnight"] {
+    color-scheme: dark;
+  }
+
+  html.dark body,
+  body.dark {
+    background-color: #090D16;
+    color: #F8FAFC;
+  }
+
+  /* Midnight theme surface transitions */
+  html.dark .bg-white {
+    background-color: #0F172A !important;
+  }
+
+  html.dark .bg-\[\#F8FAF7\],
+  html.dark .bg-\[\#F8FAFC\],
+  html.dark .bg-slate-50,
+  html.dark .bg-gray-50 {
+    background-color: #090D16 !important;
+  }
+
+  html.dark .bg-slate-100,
+  html.dark .bg-gray-100 {
+    background-color: #151F33 !important;
+  }
+
+  html.dark .text-slate-900,
+  html.dark .text-\[\#111827\],
+  html.dark .text-gray-900 {
+    color: #F8FAFC !important;
+  }
+
+  html.dark .text-slate-800,
+  html.dark .text-gray-800 {
+    color: #F1F5F9 !important;
+  }
+
+  html.dark .text-slate-700,
+  html.dark .text-slate-600,
+  html.dark .text-gray-700,
+  html.dark .text-gray-600 {
+    color: #CBD5E1 !important;
+  }
+
+  html.dark .text-slate-500,
+  html.dark .text-slate-400,
+  html.dark .text-gray-500,
+  html.dark .text-gray-400 {
+    color: #94A3B8 !important;
+  }
+
+  html.dark .border-slate-100,
+  html.dark .border-slate-200,
+  html.dark .border-gray-100,
+  html.dark .border-gray-200 {
+    border-color: #1E293B !important;
+  }
+
+  /* Form controls in Midnight theme */
+  html.dark input,
+  html.dark textarea,
+  html.dark select {
+    background-color: #0F172A;
+    color: #F8FAFC;
+    border-color: #1E293B;
+  }
+
+  html.dark input::placeholder,
+  html.dark textarea::placeholder {
+    color: #64748B;
+  }
+  
+  h1, h2 {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+
+  .font-serif, .font-heading {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+
+  .font-display {
+    font-family: 'DM Serif Display', Georgia, serif;
+  }
+
+  .font-sans, .font-body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* iOS Safari prevent auto-zoom on input focus while maintaining pristine visual scales */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="password"],
+  input[type="search"],
+  input[type="date"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* iOS and Android Safe Area Inset Helpers */
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pl-safe {
+  padding-left: env(safe-area-inset-left, 0px);
+}
+.pr-safe {
+  padding-right: env(safe-area-inset-right, 0px);
+}
+
+/* Momentum scrolling for tables and containers on mobile */
+.overflow-x-auto,
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for seamless horizontal tab ribbons */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.font-editorial {
+  font-family: 'Newsreader', 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Custom Luxury Warm Light Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8CEBC;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8934C;
+}
+
+/* Luxury Light Accents */
+.luxe-gold-glow {
+  box-shadow: 0 0 25px -5px rgba(184, 147, 76, 0.18);
+}
+
+.luxe-card {
+  background-color: #FFFFFF;
+  border: 1px solid #E5DECE;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxe-card:hover {
+  border-color: #B8934C;
+  box-shadow: 0 8px 30px -10px rgba(155, 120, 62, 0.08);
+}
+

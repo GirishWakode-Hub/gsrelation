@@ -1,0 +1,8 @@
+{
+  "name": "Remix Apex \u0026 Vantage PR",
+  "description": "Modern Public Relations, media relations, newsroom, client portal, and AI PR intelligence platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
